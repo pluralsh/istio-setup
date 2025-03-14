@@ -1,0 +1,6 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: GitRepository
+metadata:
+  name: istio-setup
+spec:
+  url: https://github.com/pluralsh/istio-setup.git
