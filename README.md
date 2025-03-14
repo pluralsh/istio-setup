@@ -1,4 +1,4 @@
-# istio-setup
+# Istio Setup
 Setup manual for Istio in Ambient mode.
 
 1. Use `kubectl get crd gateways.gateway.networking.k8s.io` to check if Gateway API CRDs are deployed on the cluster and if it is not the case then use manifests from `gateway-api.yaml` to deploy them.

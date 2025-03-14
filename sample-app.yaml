@@ -4,3 +4,20 @@ metadata:
   name: istio-setup
 spec:
   url: https://github.com/pluralsh/istio-setup.git
+---
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: istio-sample-app
+  namespace: apps
+spec:
+  repositoryRef:
+    kind: GitRepository
+    name: istio-setup
+  git:
+    folder: sample-app
+    ref: main
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
