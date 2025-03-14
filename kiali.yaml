@@ -12,6 +12,9 @@ spec:
     values:
       auth:
         strategy: anonymous
+      deployment:
+        logger:
+          log_level: debug
   clusterRef:
     kind: Cluster
     name: mgmt
