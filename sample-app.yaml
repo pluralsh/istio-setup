@@ -1,3 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-sample-app
+  labels:
+    istio.io/dataplane-mode: ambient
+---
 apiVersion: deployments.plural.sh/v1alpha1
 kind: GitRepository
 metadata:
