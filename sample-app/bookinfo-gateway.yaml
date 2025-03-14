@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: bookinfo-gateway
+  annotations:
+    networking.istio.io/service-type: ClusterIP # By default, Istio creates a LoadBalancer service for a gateway. As you will access this gateway by a tunnel, you don’t need a load balancer.
 spec:
   gatewayClassName: istio
   listeners:
