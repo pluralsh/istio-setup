@@ -1,0 +1,23 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: GitRepository
+metadata:
+  name: gateway-api
+spec:
+  url: https://github.com/kubernetes-sigs/gateway-api.git
+---
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: gateway-api
+  namespace: infra
+spec:
+  repositoryRef:
+    kind: GitRepository
+    name: gateway-api
+  git:
+    folder: config/crd/standard
+    ref: v1.2.1
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
