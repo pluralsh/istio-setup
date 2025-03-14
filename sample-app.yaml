@@ -11,6 +11,7 @@ metadata:
   name: istio-sample-app
   namespace: apps
 spec:
+  namespace: istio-sample-app
   repositoryRef:
     kind: GitRepository
     name: istio-setup
