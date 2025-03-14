@@ -5,16 +5,12 @@ metadata:
   namespace: apps
 spec:
   namespace: istio-system
-  helm:
-    url: https://kiali.org/helm-charts
-    chart: kiali-server
-    version: 'x.x.x'
-    values:
-      auth:
-        strategy: anonymous
-      deployment:
-        logger:
-          log_level: debug
+  repositoryRef:
+    kind: GitRepository
+    name: istio-setup
+  git:
+    folder: kiali
+    ref: main
   clusterRef:
     kind: Cluster
     name: mgmt
