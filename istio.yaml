@@ -1,0 +1,84 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: istio-base
+  namespace: apps
+spec:
+  namespace: istio-system
+  helm:
+    url: https://istio-release.storage.googleapis.com/charts
+    chart: base
+    version: 'x.x.x'
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
+---
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: istio-istiod
+  namespace: apps
+spec:
+  namespace: istio-system
+  helm:
+    url: https://istio-release.storage.googleapis.com/charts
+    chart: istiod
+    version: 'x.x.x'
+    values:
+      profile: ambient
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
+---
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: istio-cni
+  namespace: apps
+spec:
+  namespace: istio-system
+  helm:
+    url: https://istio-release.storage.googleapis.com/charts
+    chart: cni
+    version: 'x.x.x'
+    values:
+      profile: ambient
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
+---
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: istio-ztunnel
+  namespace: apps
+spec:
+  name: ztunnel
+  namespace: istio-system
+  helm:
+    url: https://istio-release.storage.googleapis.com/charts
+    chart: ztunnel
+    version: 'x.x.x'
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
+---
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: istio-ingress
+  namespace: apps
+spec:
+  namespace: istio-ingress
+  helm:
+    url: https://istio-release.storage.googleapis.com/charts
+    chart: gateway
+    version: 'x.x.x'
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
