@@ -1,0 +1,18 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: kiali
+  namespace: apps
+spec:
+  namespace: istio-system
+  helm:
+    url: https://kiali.org/helm-charts
+    chart: kiali-server
+    version: 'x.x.x'
+    values:
+      auth:
+        strategy: anonymous
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
